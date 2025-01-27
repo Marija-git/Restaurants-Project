@@ -7,7 +7,7 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
 {
-    public class GetAllRestaurantsQueryHandler(ILogger<GetRestaurantByIdQueryHandler> logger,
+    public class GetAllRestaurantsQueryHandler(ILogger<GetAllRestaurantsQueryHandler> logger,
     IRestaurantsRepository restaurantsRepository,
     IMapper mapper) : IRequestHandler<GetAllRestaurantsQuery, IEnumerable<RestaurantDto>>
     {

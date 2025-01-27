@@ -50,3 +50,9 @@ Content-Type: application/json
   "KiloCalories": 750
 }
 ###
+
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes
+###
+
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes/3
+###
