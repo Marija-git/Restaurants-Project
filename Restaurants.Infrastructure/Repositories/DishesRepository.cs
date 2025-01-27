@@ -1,11 +1,6 @@
 ﻿using Restaurants.Domain.Entities;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurants.Infrastructure.Repositories
 {
@@ -16,6 +11,11 @@ namespace Restaurants.Infrastructure.Repositories
             dbContext.Dishes.Add(dish);
             await dbContext.SaveChangesAsync();
             return dish.Id;
+        }
+        public async Task Delete(IEnumerable<Dish> dishes)
+        {
+            dbContext.RemoveRange(dishes);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

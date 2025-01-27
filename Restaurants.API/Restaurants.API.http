@@ -4,7 +4,7 @@
 
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants
 ###
-GET {{RestaurantsAPI_HostAddress}}/api/restaurants/1
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/4
 
 ###
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3
@@ -17,7 +17,7 @@ POST {{RestaurantsAPI_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "Tasty Tests2",
+  "Name": "Tasty Tests3",
   "Description": "A cozy restaurant serving a variety of delicious dishes.",
   "Category": "Indian",
   "HasDelivery": true,
@@ -41,7 +41,13 @@ Content-Type: application/json
 }
 ###
 
-POST {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes
+
+
+
+
+
+
+POST {{RestaurantsAPI_HostAddress}}/api/restaurants/7/dishes
 Content-Type: application/json
 {
   "Name": "Spaghetti Bolognese",
@@ -55,4 +61,6 @@ GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes
 ###
 
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes/3
+###
+DELETE {{RestaurantsAPI_HostAddress}}/api/restaurants/4/dishes
 ###
