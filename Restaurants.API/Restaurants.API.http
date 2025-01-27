@@ -1,0 +1,52 @@
+@RestaurantsAPI_HostAddress = https://localhost:7158
+//http://localhost:5220
+
+
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants
+###
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/1
+
+###
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3
+
+###
+GET {{RestaurantsAPI_HostAddress}}/api/restaurants/123
+
+###
+POST {{RestaurantsAPI_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Tasty Tests2",
+  "Description": "A cozy restaurant serving a variety of delicious dishes.",
+  "Category": "Indian",
+  "HasDelivery": true,
+  "ContactEmail": "info@tast.com",
+  "ContactNumber": "555-1234",
+  "City": "New York",
+  "Street": "123 Main Street",
+  "PostalCode": "10-010"
+}
+###
+
+DELETE {{RestaurantsAPI_HostAddress}}/api/restaurants/1006
+###
+
+PATCH {{RestaurantsAPI_HostAddress}}/api/restaurants/8
+Content-Type: application/json
+{
+  "Name": "Sample patch2",
+  "Description": "This is a sample restaurant description.",
+  "HasDelivery": true
+}
+###
+
+POST {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price": 12.99,
+  "KiloCalories": 750
+}
+###
