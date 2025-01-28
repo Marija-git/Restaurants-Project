@@ -1,6 +1,6 @@
 @RestaurantsAPI_HostAddress = https://localhost:7158
 //http://localhost:5220
-
+@token = acctokenfromloginresp
 
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants
 ###
@@ -8,6 +8,7 @@ GET {{RestaurantsAPI_HostAddress}}/api/restaurants/4
 
 ###
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3
+Authorization:Bearer{{token}}
 
 ###
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants/123
@@ -45,8 +46,6 @@ Content-Type: application/json
 
 
 
-
-
 POST {{RestaurantsAPI_HostAddress}}/api/restaurants/7/dishes
 Content-Type: application/json
 {
@@ -64,3 +63,22 @@ GET {{RestaurantsAPI_HostAddress}}/api/restaurants/3/dishes/3
 ###
 DELETE {{RestaurantsAPI_HostAddress}}/api/restaurants/4/dishes
 ###
+
+
+
+
+
+
+POST {{RestaurantsAPI_HostAddress}}/api/identity/register
+Content-Type: application/json
+{
+    "email": "testuser@test.com",
+    "password": "Password1!"
+}
+###
+POST {{RestaurantsAPI_HostAddress}}/api/identity/login
+Content-Type: application/json
+{
+    "email": "testuser@test.com",
+    "password": "Password1!"
+}
