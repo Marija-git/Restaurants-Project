@@ -1,6 +1,6 @@
 @RestaurantsAPI_HostAddress = https://localhost:7158
 //http://localhost:5220
-@token = acctokenfromloginresp
+@token = CfDJ8JdJEervLchDnMkfpUArbPvAycc_ibo8TEwuQ-xlfST4v65NzZX57ncUTrf3k3seyfa5caupplKjdr9xgDhyNo8RkzfetnySBfHQipOLcHRwv14CB3IALpDCHyJFDcCixV1oawDAVCGUHvzMDiRYl_ypwA-agXcyOQwI9L7o4xAzsVaKL34-rHp2Ixx_a0t9a3fdj0uQJvTzRg42XJqnyJdvROortXIAfK3uAG0x2nmQouGnahd96LjpY-e-uquXyREf2wQ4DWTMo0UzSwfyUEr9orFrMHxYeZJFQDpdtsD4Su4SVpn3bcmq7KhhtPF0EgcC4T4IgihNceMYJRAVCJUxfj8ImPo95Y4AHIn43--ElNNFFLsNEYtpGFFEij0gawIeSiOuVA8jMlN4VWhDhRtDgaePQ5PlhAX7156uszNn2a6Vlaxt_DsaqyXXeb1SZLdbtTrJpQC98L9I4UkAA7ZDuFmFHuPH243ZbDfeo7cRdVjcIbD-NE7dWRF8KjhyQA-IIF1v6zr-fJVinJGJUXxcQlMxPCEvai8xoSHu4u5L8fylWm26LeBQYfPLKxFtZPXutL8nkRuNPpUYkdHn9tLyD6cJV6sgPOTTknLTo5OhKCRIuWMVRMHzzPyxjrwTUyYVPYFZrnVl0TxWXifzEdx82mLnoNIrgHJ4L4iaNm72udeq16rNW7SMn70NFt0waZ8j1DzTLem8Q2ruAxHv0kaQkaSTX3BQOdVic5Xn4TIH3fUlo85r6CPyEx63jC3ytqH2eNxp6dPdGAuFcq-5E7Mwej-QVR3ij2rwvCKkBnUP
 
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants
 ###
@@ -15,10 +15,11 @@ GET {{RestaurantsAPI_HostAddress}}/api/restaurants/123
 
 ###
 POST {{RestaurantsAPI_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "Name": "Tasty Tests3",
+  "Name": "Tasty Tests4",
   "Description": "A cozy restaurant serving a variety of delicious dishes.",
   "Category": "Indian",
   "HasDelivery": true,
@@ -72,13 +73,13 @@ DELETE {{RestaurantsAPI_HostAddress}}/api/restaurants/4/dishes
 POST {{RestaurantsAPI_HostAddress}}/api/identity/register
 Content-Type: application/json
 {
-    "email": "testuser@test.com",
+    "email": "user@test.com",
     "password": "Password1!"
 }
 ###
 POST {{RestaurantsAPI_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
-    "email": "testuser@test.com",
+    "email": "owner@test.com",
     "password": "Password1!"
 }
