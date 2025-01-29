@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Entities;
 
-namespace Restaurants.Application.Users.Commands
+namespace Restaurants.Application.Users.Commands.UpdateUserDetails
 {
     public class UpdateUserDetailsCommandHandler(IUserContext userContext,
         ILogger<UpdateUserDetailsCommandHandler> logger, IUserStore<User> userStore
@@ -19,13 +19,13 @@ namespace Restaurants.Application.Users.Commands
             //cancellationToken kako bi se omogućilo otkazivanje operacije ako to bude potrebno
             // na primer, ako korisnik pređe na drugu stranu aplikacije ili ako se završi neka dugotrajna operacija
             var dataBaseUser = await userStore.FindByIdAsync(user!.Id, cancellationToken);
-            if(dataBaseUser is null)
+            if (dataBaseUser is null)
             {
-                throw new NotFoundException(nameof(user),user!.Id);
+                throw new NotFoundException(nameof(user), user!.Id);
             }
 
             dataBaseUser.DateOfBirth = request.DateOfBirth;
-            dataBaseUser.Nationality = request.Nationality;           
+            dataBaseUser.Nationality = request.Nationality;
             await userStore.UpdateAsync(dataBaseUser, cancellationToken);
         }
     }

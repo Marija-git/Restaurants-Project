@@ -16,10 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Restaurants.Domain\Restaurants.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Users\" />
-  </ItemGroup>
 	
 
 </Project>
