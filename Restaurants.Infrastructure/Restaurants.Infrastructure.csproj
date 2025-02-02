@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Restaurants.Application\Restaurants.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>
