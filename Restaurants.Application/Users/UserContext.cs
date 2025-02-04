@@ -20,13 +20,13 @@ namespace Restaurants.Application.Users
             //info o trenutnom korisniku pomocu http context-a
             //sa "?" osiguravamo da nece biti bacena greska vec ce user biti null
             var user = httpContextAccessor?.HttpContext?.User; 
-            if(user is null)
+            if(user == null)
             {
                 throw new InvalidOperationException("User context is not presetn.");
             }
 
             //ako korisnik ne postoji ili nije autentifikovan
-            if (user.Identity is null || !user.Identity.IsAuthenticated) 
+            if (user.Identity == null || !user.Identity.IsAuthenticated) 
             {
                 return null;
             }

@@ -1,9 +1,9 @@
 @RestaurantsAPI_HostAddress = https://localhost:7158
 //http://localhost:5220
-@token = CfDJ8JdJEervLchDnMkfpUArbPuepOwkMf79gGAbi14pW0Ysf4D8AmOkBM4QlmaAeDNLQ_Qe43po8mYMg7DMMvaoXTBI-p7tQHI4OBLrfLAMb2JwJJY9r_OE1PIgiIZz0fK5rIB_Ymb0vQf6lQPW-ANQOx3Rm9Kyvjg1xHtgi761OqtHacBWvKjt1MrHHMTCkWDTNxetYOAnFwg7L3B3QR5L7tAeBedQjHKxzpzvdlwM8E364rZoOyHpL7dl-T11kzZxoYFr-Y-KqhByK41IxvZrbbSP9-pRi9PAfNQ8z_z87RWtVDEIEjkITUeoK7lAjIjFbTYDjy3pPb654AlZp1c-SfA_eQRn9J07B16A1NrVboGjkpJ4hyxDGlWC0-NaHF0Ixa1zXw63_-uIiRNG0p_Zs1kAauIU-CTZrESrs-MV3gyOW3ew5UcJb1AzMEaNNb2Kzmo43UmNket_32bAYt5oo4K8Sy1BZnIjcE8C9Md_sNmyboe1orqKDjbF0v4X5Qs0u5635CnEPC5_XeL7E1Y3zxcU3HQKoopg5yLlVHKMhuIZ2rInPa49KzDrjnKo-UVOq4eROztRgxnXv0lsitngkJ_ydp2LPQSPBuZmMwF57kG4zEvML4Zmd5tHhrk7eUmOHNyDunEi90ik0KWi-sg9Vixb36Zg0rWgNpVq7vHjmB0O0aO0TsYqPxCMViCMt2RckVZ70LQiqo-CWkJg7VmTTDoLpkW46aVCvT6E1DfwKAoWjoKlzCDzzcw3NBhgmDI8WxLFHVbCkJ0Ejd9_WE450WEm_tiN6OqK_fNYic4Sp5sOGrETyIByAA5XVIpFKgMh_Uc8PwBFG0b0Z_SYTZPL65ZYNOPejvzHHvOHnToBCNcqulpPo4DFEeyf3yb3rdzjQw
+@token = CfDJ8JdJEervLchDnMkfpUArbPtqsXKnWVoY2QLyE7FMeZH4P0rRnKV_DM1FRXztusIXTrDDq6ODuB97hJoGvxttiCtMMyjJyXXtRiIjAuthCjM5dPzF8tveGYx_U87TWtZfQp8dmkaCCK51tr3Gx-c-iG95sVHfyMxqgw6wkxjFkILopgI26qDkzx2NKqiuuyCecWZ2r9ZaCnFdUH9cVys2PTD-Vnl1CrirUQ2mY5O0A6q3HoL4pXZGKgJHZaWeOqP-Ts21BAjp0AGi6NkedETFyzOWQrcejEJtURkm2xMvinT-mZIFZd1OVeHhAiF8ma4w6Z77MkJzWfVXMZbfiFN6GjrhzMJElDoK_Lt3_NyU1bEtMTRzyZ8c8Dn5DbotlIEP00GTgX1kwy6R0kEky_n0YD98d035oVY3Qobaa7Dqo6c_AZWVyAoydQy1six1ZOTCJkfGvmTW21-_LX0yHIkAkEepUyo1ormBkXJmazM1iYhHAw1cqQ-XPn1v0H3YdWfzVJsPtadV0cpL7xe49EQ6Yjxzn4ezOrpXOnAvQ9KAgRCE4tPoqJgjPofKNY2DJ-kYOQYAkmrX_jzOZWJ0RlJhh62GQL2tRyrkncV9L186DQZBf4McYTfXewdeSmwWJNaP3fB1WtlXfAJRyTPN65mP2ia5tG2SfAi-bD2ihuYb1Lskxs0lAIKR4MFiXEjsgIrp-VGx5jcZ4vuimG-ycLRztXygMiuYhaKJx0_U3BR1kBgXjALJF_5R-7lwReAWfJGVCynIrdhslW4zNXYpejYSNndkDmhoM1v44CmVcqeJbmfyb6W78TOx0EqFxlE9e0CxYVDqKot2eKuoNfqtBKlrsVg
 
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants
-Authorization:Bearer{{token}}
+Authorization: Bearer {{token}}
 ###
 GET {{RestaurantsAPI_HostAddress}}/api/restaurants/11
 Authorization: Bearer {{token}}
@@ -78,14 +78,14 @@ DELETE {{RestaurantsAPI_HostAddress}}/api/restaurants/4/dishes
 POST {{RestaurantsAPI_HostAddress}}/api/identity/register
 Content-Type: application/json
 {
-    "email": "user@test.com",
+    "email": "owner2@test.com",
     "password": "Password1!"
 }
 ###
 POST {{RestaurantsAPI_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
-    "email": "testuser@test.com",
+    "email": "owner2@test.com",
     "password": "Password1!"
 }
 ###
@@ -96,5 +96,13 @@ Authorization: Bearer {{token}}
 {
   "Nationality": "French",
   "DateOfBirth": "2010-01-01"
+}
+###
+POST {{RestaurantsAPI_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+  "UserEmail": "owner2@test.com",
+  "RoleName": "Owner"
 }
 ###
