@@ -14,5 +14,6 @@ namespace Restaurants.Domain.Repositories
         Task<int> Create(Restaurant restaurant);
         Task Delete(Restaurant restaurant);
         Task Update();
+        Task<IEnumerable<Restaurant>> GetAllMatching(string? searchPhrase);
     }
 }
