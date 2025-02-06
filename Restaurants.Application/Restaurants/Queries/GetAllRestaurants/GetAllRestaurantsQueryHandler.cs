@@ -9,13 +9,20 @@ namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
 {
     public class GetAllRestaurantsQueryHandler(ILogger<GetAllRestaurantsQueryHandler> logger,
     IRestaurantsRepository restaurantsRepository,
-    IMapper mapper) : IRequestHandler<GetAllRestaurantsQuery, IEnumerable<RestaurantDto>>
+    IMapper mapper) : IRequestHandler<GetAllRestaurantsQuery, PaginatedResult<RestaurantDto>>
     {
-        public async Task<IEnumerable<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
+        public async Task<PaginatedResult<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
         {
             logger.LogInformation("Getting all restaurants {searchQuery}", request.SearchPhrase);
-            var restaurantsDtos = mapper.Map<IEnumerable<RestaurantDto>>(await restaurantsRepository.GetAllMatching(request.SearchPhrase));
-            return restaurantsDtos;
+
+            var (restaurants, totalCount) = await restaurantsRepository.GetAllMatching(request.SearchPhrase,
+                request.PageSize,
+                request.PageIndex,
+                request.SortBy,
+                request.SortDirection);
+
+            var restaurantsDtos = mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
+            return new PaginatedResult<RestaurantDto>(restaurantsDtos,totalCount,request.PageSize,request.PageIndex);
         }
     }
 }
