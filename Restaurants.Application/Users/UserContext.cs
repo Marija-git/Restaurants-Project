@@ -22,7 +22,7 @@ namespace Restaurants.Application.Users
             var user = httpContextAccessor?.HttpContext?.User; 
             if(user == null)
             {
-                throw new InvalidOperationException("User context is not presetn.");
+                throw new InvalidOperationException("User context is not present.");
             }
 
             //ako korisnik ne postoji ili nije autentifikovan

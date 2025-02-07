@@ -3,7 +3,7 @@
 namespace Restaurants.Application.Users
 {
     //record tip u C# je specijalni tip koji se koristi za čuvanje podataka sa automatski generisanim metodama za poređenje i kopiranje
-    public record CurrentUser(string Id, string Email,
+    public record  CurrentUser(string Id, string Email,
         IEnumerable<string> Roles,
         string? Nationality,
         DateOnly? DateOfBirth)
