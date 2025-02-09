@@ -39,3 +39,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//razdvjanje konfiguracije za produkciju od testiranja
+//omogucavanje testovima pokretanje app bez potrebe za testiranjem cele app sa svi produkcijskim konfig.
+//u testovima mozemo praviti specificne konfiguracije(lazni podaci,posebne testne postavke,mock-ove) koji nisu deo produkcije
+public partial class Program { }
