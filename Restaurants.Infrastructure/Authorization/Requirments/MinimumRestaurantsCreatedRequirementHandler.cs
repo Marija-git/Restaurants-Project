@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Infrastructure.Authorization.Requirments
 {
-    public class MinimumRestaurantsCreatedRequirementHandler(IUserContext userContext,
+    internal class MinimumRestaurantsCreatedRequirementHandler(IUserContext userContext,
         IRestaurantsRepository restaurantsRepository)
         : AuthorizationHandler<MinimumRestaurantsCreatedRequirement>
     {
