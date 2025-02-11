@@ -15,6 +15,6 @@
 
         public string OwnerId { get; set; } = default!;
         public User Owner { get; set; } = default!;
-
+        public string? LogoUrl { get; set; } //nullable string bcs logo is an optional value
     }
 }

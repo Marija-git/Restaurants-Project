@@ -12,6 +12,8 @@ using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeders;
 using Restaurants.Infrastructure.Authorization.Services;
+using Restaurants.Infrastructure.Configuration;
+using Restaurants.Infrastructure.Storage;
 
 
 namespace Restaurants.Infrastructure.Extensions
@@ -43,6 +45,9 @@ namespace Restaurants.Infrastructure.Extensions
                 builder => builder.AddRequirements(new MinimumAgeRequirment(20)))
                  .AddPolicy(PolicyNames.CreatedAtLeast2Restaurants, 
                  builder => builder.AddRequirements(new MinimumRestaurantsCreatedRequirement(2)));
+
+            services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+            services.AddScoped<IBlobStorageService, BlobStorageService>();
 
            
         }
