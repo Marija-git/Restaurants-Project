@@ -401,3 +401,5 @@ FodyWeavers.xsd
 
 # Ignore sql files
 *.sqlsrc/Restaurants.API/appsettings.Development.json
+SQLQuery1.sql
+SQLQuery2.sql
