@@ -400,4 +400,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Ignore sql files
-*.sql
+*.sqlsrc/Restaurants.API/appsettings.Development.json
