@@ -399,7 +399,10 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Ignore sql files
-*.sqlsrc/Restaurants.API/appsettings.Development.json
+# Ignore SQL files
+*.sql
+
+# Ignore specific files
+src/Restaurants.API/appsettings.Development.json
 SQLQuery1.sql
 SQLQuery2.sql
