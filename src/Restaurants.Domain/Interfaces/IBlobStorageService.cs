@@ -8,5 +8,6 @@ namespace Restaurants.Domain.Interfaces
 {
     public interface IBlobStorageService    {
         Task<string> UploadToBlobStorage(Stream data, string fileName);
+        string? GetBlobSasUrl(string? blobUrl);
     }
 }
