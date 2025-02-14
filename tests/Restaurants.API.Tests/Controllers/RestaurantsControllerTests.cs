@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Restaurants.Domain.Entities;
 using Restaurants.Application.Restaurants.Dtos;
 using System.Net.Http.Json;
+using Restaurants.Infrastructure.Seeders;
 
 namespace Restaurants.API.Controllers.Tests
 {
@@ -26,6 +27,7 @@ namespace Restaurants.API.Controllers.Tests
         //omocuvanje pokretanja app unutar testa,pravljenje http clienta i slanje zahteva ka stvarnom serveru kao da je app u produkciji
         private readonly WebApplicationFactory<Program> _factory;
         private readonly Mock<IRestaurantsRepository> _restaurantsRepositoryMock = new();
+        private readonly Mock<IRestaurantSeeder> _restaurantSeederMock = new();
 
         public RestaurantsControllerTests(WebApplicationFactory<Program> factory)
         {
@@ -39,8 +41,8 @@ namespace Restaurants.API.Controllers.Tests
                     //zamena postojeceg IRestaurantRepositor koji pristupa bazi sa mock/simulacijom tog repozitorija
                     //koji vraca predefinisane rezultate
                     //posebna instanca za svavki test
-                    services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantsRepository),
-                                                _ => _restaurantsRepositoryMock.Object));
+                    services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantSeeder),
+                                                _ => _restaurantSeederMock.Object));
                 });
             });
         }
