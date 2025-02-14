@@ -37,11 +37,13 @@ namespace Restaurants.API.Controllers.Tests
                 builder.ConfigureTestServices(services =>
                 {
                     //jedinstvena instanca za sve testove/za fejk auth
-                    services.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>(); 
+                    services.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>();
 
                     //zamena postojeceg IRestaurantRepositor koji pristupa bazi sa mock/simulacijom tog repozitorija
                     //koji vraca predefinisane rezultate
                     //posebna instanca za svavki test
+                    services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantsRepository),
+                                           _ => _restaurantsRepositoryMock.Object));
                     services.Replace(ServiceDescriptor.Scoped(typeof(IRestaurantSeeder),
                                                 _ => _restaurantSeederMock.Object));
                 });
@@ -63,7 +65,7 @@ namespace Restaurants.API.Controllers.Tests
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
-       /* [Fact]
+        [Fact]
         public async Task GetById_ForExistingId_ShouldReturn200OK()
         {
             //arrange
@@ -82,7 +84,7 @@ namespace Restaurants.API.Controllers.Tests
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             restaurantDto.Should().NotBeNull();
             restaurantDto.Id.Should().Be(restaurant.Id);
-        }*/
+        }
 
         [Fact]
         public async Task GetAllRestaurants_ValidRequest_Returns200OK()
@@ -91,10 +93,10 @@ namespace Restaurants.API.Controllers.Tests
             var client = _factory.CreateClient();
 
             //act
-            var result = await client.GetAsync("/api/restaurants?pageSize=3&pageIndex=1");
+            var result = await client.GetAsync("/api/restaurants?pageIndex=1&pageSize=3");
 
             //assert
-            result.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
         [Fact]
         public async Task GetAllRestaurants_InvalidRequest_Returns400BadRequest()
