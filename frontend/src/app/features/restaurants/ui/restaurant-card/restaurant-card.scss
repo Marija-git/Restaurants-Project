@@ -1,0 +1,22 @@
+:host { display: block; }
+mat-card {
+  height: 100%;
+  border-radius: 20px;
+  background: var(--mat-sys-surface-container-lowest);
+}
+h2 { margin: 0; font: var(--mat-sys-title-large); overflow-wrap: anywhere; }
+mat-card-content { padding-top: 16px; padding-bottom: 24px; }
+.description { margin-top: 0; overflow-wrap: anywhere; }
+.location { color: var(--mat-sys-on-surface-variant); }
+.delivery {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-large);
+}
+.available {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}

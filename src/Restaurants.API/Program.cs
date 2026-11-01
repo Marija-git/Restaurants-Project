@@ -15,6 +15,16 @@ try
     builder.Services.AddApplication();
     builder.Services.AddInfrastructure(builder.Configuration);
 
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AngularFrontend", policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+    });
+
     var app = builder.Build();
 
     var scope = app.Services.CreateScope();
@@ -31,6 +41,8 @@ try
     }
 
     app.UseHttpsRedirection();
+
+    app.UseCors("AngularFrontend");
 
     app.MapGroup("api/identity")
         .WithTags("Identity")

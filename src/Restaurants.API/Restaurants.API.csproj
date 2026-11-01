@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Restaurants.Application\Restaurants.Application.csproj" />
     <ProjectReference Include="..\Restaurants.Infrastructure\Restaurants.Infrastructure.csproj" />
   </ItemGroup>
@@ -19,10 +26,6 @@
 		<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
 		<PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Logs\" />
 	</ItemGroup>
 
 

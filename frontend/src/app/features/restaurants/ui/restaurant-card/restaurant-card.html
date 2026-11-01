@@ -1,0 +1,15 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title><h2>{{ restaurant().name }}</h2></mat-card-title>
+    <mat-card-subtitle>{{ restaurant().category }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="description">{{ restaurant().description }}</p>
+    @if (restaurant().city) {
+      <p class="location">{{ restaurant().city }}</p>
+    }
+    <span class="delivery" [class.available]="restaurant().hasDelivery">
+      {{ restaurant().hasDelivery ? 'Delivery available' : 'No delivery' }}
+    </span>
+  </mat-card-content>
+</mat-card>

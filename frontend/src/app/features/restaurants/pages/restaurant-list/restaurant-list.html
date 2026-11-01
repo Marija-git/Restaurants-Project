@@ -1,0 +1,41 @@
+<main class="page">
+  <header class="page-header">
+    <h1>Restaurants</h1>
+    <p>Explore restaurants and find your next favorite.</p>
+  </header>
+
+  <section [attr.aria-busy]="loading()" aria-label="Restaurant results">
+    @if (loading()) {
+      <div class="status" role="status">
+        <mat-spinner [diameter]="40" aria-label="Loading restaurants" />
+        <p>Loading restaurants...</p>
+      </div>
+    } @else if (error(); as message) {
+      <div class="status error">
+        <p role="alert">{{ message }}</p>
+        <button mat-flat-button type="button" (click)="loadRestaurants()">Try again</button>
+      </div>
+    } @else {
+      <div class="restaurant-grid">
+        <!-- Stable IDs let Angular identify cards when the list changes. -->
+        @for (restaurant of restaurants(); track restaurant.id) {
+          <app-restaurant-card [restaurant]="restaurant" />
+        } @empty {
+          <div class="status" role="status"><p>No restaurants found.</p></div>
+        }
+      </div>
+    }
+  </section>
+
+  <!-- Keep pagination mounted while loading, but prevent overlapping page requests. -->
+  <mat-paginator
+    aria-label="Restaurant pagination"
+    [length]="totalCount()"
+    [pageIndex]="pageIndex() - 1"
+    [pageSize]="pageSize()"
+    [pageSizeOptions]="pageSizeOptions"
+    [disabled]="loading() || error() !== null"
+    [showFirstLastButtons]="true"
+    (page)="onPageChange($event)"
+  />
+</main>
